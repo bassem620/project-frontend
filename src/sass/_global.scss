@@ -1,0 +1,29 @@
+// Global
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 !important;
+    background-color: #ddd;
+    height: 4000px;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: white;
+    &:hover{
+        color: white;
+    }
+}
+
+ul {
+    list-style: none !important;
+    padding: 0;
+}
