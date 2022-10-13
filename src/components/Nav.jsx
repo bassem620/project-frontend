@@ -20,6 +20,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 
 const Nav = () => {
     const [menuState, setMenuState] = useState("hide");
+    const BASE_URL = "/project-frontend";
     return (
         <>
         <nav className="navbar navbar-expand-lg bg-white fixed-top shadow-sm">
@@ -35,37 +36,37 @@ const Nav = () => {
                 <div className={"menu " + menuState} id="navbarLinks">
                     <div className="links-container navbar-nav ms-auto bg-dark-1">
                         < MenuLink 
-                            url="/home"       
+                            url={ BASE_URL + "/home" }
                             title="Home"      
                             unactiveIcon={<HomeOutlinedIcon />}
                             activeIcon={<HomeRoundedIcon />}
                             />
                         < MenuLink 
-                            url="/sell"       
+                            url={ BASE_URL + "/sell" }
                             title="Sell"      
                             unactiveIcon={<AddRoundedIcon />}
                             activeIcon={<AddRoundedIcon />}
                             />
                         < MenuLink 
-                            url="/my-ads"     
+                            url={ BASE_URL + "/my-ads" }
                             title="My ads"     
                             unactiveIcon={<LocalOfferOutlinedIcon />}
                             activeIcon={<LocalOfferIcon />}
                             />
                         < MenuLink 
-                            url="/favorites"  
+                            url={ BASE_URL + "/favorites" }
                             title="Favorites"  
                             unactiveIcon={<FavoriteBorderRoundedIcon />}
                             activeIcon={<FavoriteIcon />}
                             />
                         < MenuLink 
-                            url="/account"    
+                            url={ BASE_URL + "/account" }
                             title="Log In"    
                             unactiveIcon={<PersonOutlineOutlinedIcon />}
                             activeIcon={<PersonIcon />}
                             />
                         < MenuLink 
-                            url="/categories" 
+                            url={ BASE_URL + "/categories" }
                             title="Categories" 
                             unactiveIcon={<CategoryOutlinedIcon />}
                             activeIcon={<CategoryIcon />}
