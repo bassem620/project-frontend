@@ -1,17 +1,36 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner from "../components/Spinner"
+import { register, reset } from "../features/users/userSlice";
 
 const Register = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         username: '',
+        phone: null,
         password:'',
         confirmPassword:''
     });
 
-    const { firstName, lastName, username, password, confirmPassword } = formData;
+    const { firstName, lastName, username, phone,  password, confirmPassword } = formData;
+
+    const {user, isLoading, isError, isSuccess, message } = useSelector( state => state.user);
+
+    useEffect( _ => {
+        if(isError){
+            toast.error(message, {hideProgressBar: true, autoClose: 3000});
+        }
+        if(isSuccess || user){
+            navigate('/');
+        }
+        dispatch(reset());
+    }, [user, isError, isSuccess, message, navigate, dispatch]);
 
     const onChange = e => {
         setFormData( prevState => ({
@@ -22,7 +41,7 @@ const Register = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        if( !firstName || !lastName || !username || !password || !confirmPassword){
+        if( !firstName || !lastName || !username || !password || !confirmPassword || !phone) {
             toast.error("Please all fields", {hideProgressBar: true, autoClose: 3000});
             return;
         }
@@ -30,6 +49,13 @@ const Register = () => {
             toast.error("Passwords doesn't match", {hideProgressBar: true, autoClose: 3000});
             return;
         }
+        const userData = {firstName, lastName, username, phone, password};
+        dispatch(register(userData));
+        toast.success("You are signed up successfully");
+    }
+
+    if(isLoading){
+        return <Spinner />
     }
 
     return (
@@ -61,6 +87,18 @@ const Register = () => {
                         id="lastName"
                         value={lastName}
                         placeholder="Enter your last name"
+                        onChange={onChange}
+                    />
+                    <label htmlFor="phone" className="d-block ms-1 fs-5">
+                        Phone
+                    </label>
+                    <input 
+                        type="number" 
+                        className="rounded-pill py-2 px-4 bg-light-white border-0"
+                        name="phone"
+                        id="phone"
+                        value={phone}
+                        placeholder="Enter your phone"
                         onChange={onChange}
                     />
                     <label htmlFor="username" className="d-block ms-1 fs-5">

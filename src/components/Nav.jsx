@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import MenuLink from "./MenuLink";
+import { useSelector } from "react-redux";
 
 // Bars Icon
 import DehazeRoundedIcon from '@mui/icons-material/DehazeRounded';
@@ -19,6 +20,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 
 const Nav = () => {
+    const { user } = useSelector( state => state.user);
     const [menuState, setMenuState] = useState("hide");
     const BASE_URL = "/project-frontend";
     return (
@@ -29,7 +31,7 @@ const Nav = () => {
                 <button className="toggler d-block ms-auto d-lg-none btn btn-outline-green" type="button" onClick={ _ => setMenuState(menuState === "hide" ? "show" : "hide")}>
                     <DehazeRoundedIcon />
                 </button>
-                <NavLink className="sell-btn d-none d-lg-block bg-dark-1 ps-5 rounded-pill" to="/sell">
+                <NavLink className="sell-btn d-none d-lg-block bg-dark-1 ps-5 rounded-pill" to={ BASE_URL + "/sell"} >
                     <div className="add-icon"><AddRoundedIcon /></div>
                     <span>Sell</span>
                 </NavLink>
@@ -60,8 +62,8 @@ const Nav = () => {
                             activeIcon={<FavoriteIcon />}
                             />
                         < MenuLink 
-                            url={ BASE_URL + "/account" }
-                            title="Log In"    
+                            url={ BASE_URL + (user ? "/account" : "/sign-in") }
+                            title={ user ? "Account" : "Sign in"}    
                             unactiveIcon={<PersonOutlineOutlinedIcon />}
                             activeIcon={<PersonIcon />}
                             />

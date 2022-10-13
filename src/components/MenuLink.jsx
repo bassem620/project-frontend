@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 
 const MenuLink = (props) => {
-    const {url, activeIcon, unactiveIcon, title} = props
+    const {url, activeIcon, unactiveIcon, title} = props;
+
     return (
         <>
         <NavLink className={"navbar-link nav-link " + (title==="Sell" ? "d-block d-lg-none" : "")} to={url}>
