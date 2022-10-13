@@ -49,6 +49,7 @@ const LogIn = () => {
             toast.error("Please enter you password", {hideProgressBar: true, autoClose: 3000});
             return;
         }
+        toast.success("Signed in");
         const userData = {username, password};
         dispatch(login(userData));
     }
