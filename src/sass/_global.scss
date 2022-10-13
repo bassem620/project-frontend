@@ -7,8 +7,7 @@ body {
     font-family: 'Fira Sans', sans-serif;
     font-family: 'Roboto', sans-serif;
     margin: 0 !important;
-    background-color: #ddd;
-    height: 4000px;
+    background-color: white;
 }
 
 *:focus {
@@ -26,4 +25,14 @@ a {
 ul {
     list-style: none !important;
     padding: 0;
+}
+
+section{
+    min-height: calc(100vh - $navHeight - $footerHeight) !important;
+    margin-top: $navHeight;
+    width: 100%;
+    padding: 10px 0;
+    .container-lg{
+        min-height: calc(100vh - $navHeight - $footerHeight) !important;
+    }
 }

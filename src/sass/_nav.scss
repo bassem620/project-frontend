@@ -56,7 +56,7 @@ nav{
 @media(max-width: 991px){
     nav{
         padding: 0 !important;
-        height: 70px !important;
+        height: $navHeight !important;
         width: 100%;
         position: relative;
         .menu.show .links-container{
@@ -133,7 +133,7 @@ nav{
 
 @media(min-width: 992px){
     nav{
-        height: 70px !important;
+        height: $navHeight !important;
         width: 100%;
         margin-top: 0;
         overflow: hidden;

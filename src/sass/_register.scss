@@ -1,0 +1,24 @@
+section.registeration{
+        font-family: 'Fira Sans', sans-serif;
+    label{
+        margin-top: 20px;
+    }
+    input{
+        width: 100%;
+    }
+    input::placeholder{
+        font-weight: 300;
+        font-size: 15px;
+    }
+    .sign-in,
+    .sign-up{
+        width: 500px;
+        max-width: 500px !important;
+        display: block;
+        .link{
+            &:hover{
+                text-decoration: underline !important;
+            }
+        }
+    }
+}
