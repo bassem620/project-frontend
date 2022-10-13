@@ -23,6 +23,10 @@ const Nav = () => {
     const { user } = useSelector( state => state.user);
     const [menuState, setMenuState] = useState("hide");
     const BASE_URL = "/project-frontend";
+    const onClick = e => {
+        e.preventDefault();
+        setMenuState(menuState === "hide" ? "show" : "hide");
+    }
     return (
         <>
         <nav className="navbar navbar-expand-lg bg-white fixed-top">
@@ -36,12 +40,14 @@ const Nav = () => {
                     <span>Sell</span>
                 </NavLink>
                 <div className={"menu " + menuState} id="navbarLinks">
-                    <div className="links-container navbar-nav ms-auto bg-dark-1">
+                    <div className="links-container navbar-nav ms-auto bg-dark-1" onClick={onClick}>
                         < MenuLink 
                             url={ BASE_URL + "/home" }
                             title="Home"      
                             unactiveIcon={<HomeOutlinedIcon />}
                             activeIcon={<HomeRoundedIcon />}
+                            setMenuState={setMenuState}
+                            menuState={menuState}
                             />
                         < MenuLink 
                             url={ BASE_URL + "/sell" }

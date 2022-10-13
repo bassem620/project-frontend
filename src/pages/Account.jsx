@@ -12,7 +12,7 @@ const Account = () => {
         <>
         <section className="account">
             <div className="container-lg">
-                <div className="user-details bg-light-green rounded-5 p-5">
+                <div className="user-details bg-light-green rounded-5 px-3 py-5 px-md-5">
                     <div className="icon"><AccountCircleOutlinedIcon /></div>
                     <div>
                         <label>First Name:</label>
