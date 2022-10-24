@@ -42,16 +42,16 @@ const Register = () => {
     const onSubmit = e => {
         e.preventDefault();
         if( !firstName || !lastName || !username || !password || !confirmPassword || !phone) {
-            toast.error("Please all fields", {hideProgressBar: true, autoClose: 3000});
+            toast.error("Please all fields", {hideProgressBar: true, autoClose: 1500});
             return;
         }
         if( password !== confirmPassword){
-            toast.error("Passwords doesn't match", {hideProgressBar: true, autoClose: 3000});
+            toast.error("Passwords doesn't match", {hideProgressBar: true, autoClose: 1500});
             return;
         }
         const userData = {firstName, lastName, username, phone, password};
         dispatch(register(userData));
-        toast.success("You are signed up successfully");
+        toast.success("You are signed up successfully", {hideProgressBar: true, autoClose: 1500});
     }
 
     if(isLoading){

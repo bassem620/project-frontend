@@ -19,7 +19,7 @@ function App() {
     <Nav />
     <Routes>
       {/* Main routes */}
-      <Route path={ BASE_URL + "/home"} element={<Home />}/>
+      <Route path={ BASE_URL + "/home"} element={<Home user={user}/>}/>
       <Route path={ BASE_URL + "/account"} element={<Account />} />
       <Route path={ BASE_URL + "/sign-in"} element={<LogIn />}/>
       <Route path={ BASE_URL + "/sign-up"} element={<Register />}/>
@@ -29,6 +29,7 @@ function App() {
       <Route path={ BASE_URL + "/sell"} element={ user ? <Sell /> : <Navigate to="/project-frontend/sign-in" /> }/>
       <Route path={ BASE_URL + "/favorites"} element={ user ? <Favorites /> : <Navigate to="/project-frontend/sign-in" />}/>
       {/* Other Routes */}
+      <Route path={ BASE_URL + "/ads/:id"} element=""/>
       <Route path={ BASE_URL + "/*"} element={<Navigate to="/project-frontend/home" />} />
       <Route path="/" element={<Navigate to="/project-frontend/home" />} />
     </Routes>

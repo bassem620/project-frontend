@@ -38,18 +38,18 @@ const LogIn = () => {
     const onSubmit = e => {
         e.preventDefault();
         if(!username && !password){
-            toast.error("Please enter you username and password", {hideProgressBar: true, autoClose: 3000});
+            toast.error("Please enter you username and password", {hideProgressBar: true, autoClose: 2000});
             return;
         }
         if(!username){
-            toast.error("Please enter you username", {hideProgressBar: true, autoClose: 3000});
+            toast.error("Please enter you username", {hideProgressBar: true, autoClose: 1500});
             return;
         }
         if(!password){
-            toast.error("Please enter you password", {hideProgressBar: true, autoClose: 3000});
+            toast.error("Please enter you password", {hideProgressBar: true, autoClose: 1500});
             return;
         }
-        toast.success("Signed in");
+        toast.success("Signed in", {hideProgressBar: true, autoClose: 1000});
         const userData = {username, password};
         dispatch(login(userData));
     }

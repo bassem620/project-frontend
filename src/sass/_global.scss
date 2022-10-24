@@ -27,12 +27,3 @@ ul {
     padding: 0;
 }
 
-section{
-    min-height: calc(100vh - $navHeight - $footerHeight) !important;
-    margin-top: $navHeight;
-    width: 100%;
-    padding: 10px 0;
-    .container-lg{
-        min-height: calc(100vh - $navHeight - $footerHeight) !important;
-    }
-}

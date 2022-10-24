@@ -12,7 +12,7 @@ const Account = () => {
         <>
         <section className="account">
             <div className="container-lg">
-                <div className="user-details bg-light-green rounded-5 px-3 py-5 px-md-5">
+                <div className="user-details bg-light-green rounded-5 px-3 py-5 px-sm-5 text-center text-sm-start">
                     <div className="icon"><AccountCircleOutlinedIcon /></div>
                     <div>
                         <label>First Name:</label>
@@ -30,10 +30,10 @@ const Account = () => {
                         <label>Phone:</label>
                         <span>{user.phone}</span>
                     </div>
-                    <div className="buttons ms-md-auto">
+                    <div className="buttons mx-auto mx-sm-0 ms-sm-auto">
                     <button type="button" className="btn btn-green me-2">Edit your account</button>
                     <button type="button" className="btn btn-green me-2">Change password</button>
-                    <button type="button" className="btn btn-danger" onClick={ _ => {navigate('/'); toast.success("Signed out"); dispatch(logout());}}>Logout</button>
+                    <button type="button" className="btn btn-danger" onClick={ _ => {navigate('/'); toast.info("Signed out", {hideProgressBar: true, autoClose: 1000}); dispatch(logout());}}>Logout</button>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,17 @@
+.search{
+    width: 100%;
+    height: 60px;
+    margin: 10px 0 20px 0;
+    input{
+        height: 57px;
+        background-color: #dedede;
+        width: 100%;
+        border-radius: 22px;
+        color: $dark-1;
+        &::placeholder{
+            color: #828282;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
