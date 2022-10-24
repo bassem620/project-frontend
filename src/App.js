@@ -19,7 +19,7 @@ function App() {
     <Nav />
     <Routes>
       {/* Main routes */}
-      <Route path={ BASE_URL + "/home"} element={<Home user={user}/>}/>
+      <Route path={ BASE_URL + "/home"} element={<Home />}/>
       <Route path={ BASE_URL + "/account"} element={<Account />} />
       <Route path={ BASE_URL + "/sign-in"} element={<LogIn />}/>
       <Route path={ BASE_URL + "/sign-up"} element={<Register />}/>

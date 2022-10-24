@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
 import { getAds, reset } from "../features/ads/adSlice";
@@ -10,6 +10,8 @@ const Home = () => {
 
     const {user} = useSelector( state => state.user);
     const {ads, isError, isLoading, message} = useSelector( state => state.ad);
+
+    const allAds = useMemo( _ => ads , [ads]);
 
     useEffect( _ => {
         if(isError){
@@ -31,10 +33,10 @@ const Home = () => {
         <Search />
             <div className="container-lg">
                 <h2 className="title text-dark-1">Recently added</h2>
-                { ads.length > 0 ?
+                { allAds.length > 0 ?
                     (
                         <div className="row">
-                        {ads.map( ad => (
+                        {allAds.map( ad => (
                             <AdBox 
                             key={ad._id}
                             user={user}
