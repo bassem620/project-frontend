@@ -111,6 +111,7 @@ export const adSlice = createSlice({
     },
     extraReducers: builder => {
         builder
+        // Create Ad
         .addCase(createAd.pending, state => {
             state.isLoading = true;
         })
@@ -124,6 +125,7 @@ export const adSlice = createSlice({
             state.isError = true;
             state.message = action.payload;
         })
+        // Get Ads
         .addCase(getAds.pending, (state) => {
             state.isLoading = true;
         })
@@ -137,6 +139,7 @@ export const adSlice = createSlice({
             state.isError = true;
             state.message = action.payload;
         })
+        // Get Ad
         .addCase(getAd.pending, (state) => {
             state.isLoading = true;
         })
@@ -150,6 +153,7 @@ export const adSlice = createSlice({
             state.isError = true;
             state.message = action.payload;
         })
+        // Get User Ads
         .addCase(getUserAds.pending, (state) => {
             state.isLoading = true;
         })
@@ -163,6 +167,7 @@ export const adSlice = createSlice({
             state.isError = true;
             state.message = action.payload;
         })
+        // Delete User Ad
         .addCase(deleteUserAd.pending, (state) => {
             state.isLoading = true;
         })

@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import {ToastContainer} from 'react-toastify';
-import { useSelector } from 'react-redux';
-import Nav from './components/Nav.jsx'
+import { useSelector, useDispatch } from 'react-redux';
+import {toast, ToastContainer} from 'react-toastify';
+
+import Nav from './components/Nav.jsx';
+import Footer from './components/Footer.jsx';
 import LogIn from './pages/LogIn.jsx';
 import Register from './pages/Register.jsx';
 import Account from './pages/Account.jsx';
@@ -11,9 +14,21 @@ import Favorites from './pages/Favorites.jsx';
 import Categories from './pages/Categories.jsx';
 import MyAds from './pages/MyAds.jsx';
 
+import { getAds } from './features/ads/adSlice.js';
+
 function App() {
+  const dispatch = useDispatch();
   const { user } = useSelector( state => state.user);
+  const { isError, message} = useSelector( state => state.ad);
   const BASE_URL = "/project-frontend";
+
+  useEffect( _ => {
+    if(isError){
+        toast.error(message, {hideProgressBar: true, autoClose: 2000});
+    }
+    dispatch(getAds());
+}, [isError, message, dispatch]);
+
   return (
     <>
     <Nav />
@@ -33,6 +48,7 @@ function App() {
       <Route path={ BASE_URL + "/*"} element={<Navigate to="/project-frontend/home" />} />
       <Route path="/" element={<Navigate to="/project-frontend/home" />} />
     </Routes>
+    <Footer />
     <ToastContainer />
     </>
   );

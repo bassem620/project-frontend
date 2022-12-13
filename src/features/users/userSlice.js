@@ -7,7 +7,6 @@ const initialState = {
     user: user? user : null,
     isError: false,
     isLoading: false,
-    isSuccess: false,
     message: ""
 }
 
@@ -57,6 +56,34 @@ export const logout = createAsyncThunk(
     }
 );
 
+// Change Password
+export const changePassword = createAsyncThunk(
+    "user/changePassword",
+    async (userData, thunkAPI) => {
+        try{
+            const token = thunkAPI.getState().user.user.token;
+            return await userService.changePassword(token, userData);
+        } catch (error) {
+            const message = 
+            (
+                error.response &&
+                error.response.data &&
+                error.response.data.message
+            ) || error.message 
+            || error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    }
+)
+
+// Edit Account
+export const editAccount = createAsyncThunk(
+    "user/editAccount",
+    async (user, thunkAPI)=> {
+        return await userService.editAccount(user);
+    }
+)
+
 export const userSlice = createSlice({
     name: "user",
     initialState,
@@ -73,10 +100,12 @@ export const userSlice = createSlice({
             // Register
             .addCase(register.pending, state => {
                 state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.message = "";
             })
             .addCase(register.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.isSuccess = true;
                 state.user = action.payload;
             })
             .addCase(register.rejected, (state, action) => {
@@ -88,21 +117,67 @@ export const userSlice = createSlice({
             // Login
             .addCase(login.pending, state => {
                 state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.message = "";
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.isSuccess = true;
                 state.user = action.payload;
             })
             .addCase(login.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
-                state.user = null;
             })
             // Logout
+            .addCase(logout.pending, state => {
+                state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.message = "";
+            })
             .addCase(logout.fulfilled, state => {
                 state.user = null;
+                state.isLoading = false;
+            })
+            .addCase(logout.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
+            // Change Password
+            .addCase(changePassword.pending, state => {
+                state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.message = "";
+            })
+            .addCase(changePassword.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.message = action.payload.message;
+            })
+            .addCase(changePassword.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.isSuccess = false;
+                state.message = action.payload;
+            })
+            // Edit Account
+            .addCase(editAccount.pending, state => {
+                state.isLoading = true;
+                state.isError = false;
+                state.message = "";
+            })
+            .addCase(editAccount.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.user = action.payload;
+            })
+            .addCase(editAccount.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
             })
     }
 });

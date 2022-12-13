@@ -17,7 +17,8 @@ body {
 a {
     text-decoration: none !important;
     color: white;
-    &:hover{
+
+    &:hover {
         color: white;
     }
 }
@@ -27,3 +28,8 @@ ul {
     padding: 0;
 }
 
+.prevent-select {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

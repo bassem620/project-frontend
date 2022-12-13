@@ -26,7 +26,11 @@ const Register = () => {
         if(isError){
             toast.error(message, {hideProgressBar: true, autoClose: 3000});
         }
-        if(isSuccess || user){
+        if(isSuccess){
+            navigate('/');
+            toast.success("You are signed up successfully", {hideProgressBar: true, autoClose: 1500});
+        }
+        if(user){
             navigate('/');
         }
         dispatch(reset());
@@ -42,7 +46,7 @@ const Register = () => {
     const onSubmit = e => {
         e.preventDefault();
         if( !firstName || !lastName || !username || !password || !confirmPassword || !phone) {
-            toast.error("Please all fields", {hideProgressBar: true, autoClose: 1500});
+            toast.error("Please enter all fields", {hideProgressBar: true, autoClose: 1500});
             return;
         }
         if( password !== confirmPassword){
@@ -51,7 +55,6 @@ const Register = () => {
         }
         const userData = {firstName, lastName, username, phone, password};
         dispatch(register(userData));
-        toast.success("You are signed up successfully", {hideProgressBar: true, autoClose: 1500});
     }
 
     if(isLoading){

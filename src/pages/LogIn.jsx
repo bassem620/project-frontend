@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import {login, reset} from '../features/users/userSlice';
+import { login } from '../features/users/userSlice';
 import Spinner from '../components/Spinner';
 import { useDispatch, useSelector } from "react-redux";
 
@@ -22,11 +22,14 @@ const LogIn = () => {
         if(isError){
             toast.error(message, {hideProgressBar: true, autoClose: 3000});
         }
-        if(isSuccess || user){
+        if(isSuccess){
+            navigate('/');
+            toast.success(`Signed in as ${user.username}`, {hideProgressBar: true, autoClose: 1000});
+        }
+        if(user){
             navigate('/');
         }
-        dispatch(reset());
-    }, [user, isError, isSuccess, message, navigate, dispatch])
+    }, [user, isError, isSuccess, message, navigate, dispatch]);
 
     const onChange = e => {
         setFormData( prevState => ({
@@ -38,18 +41,17 @@ const LogIn = () => {
     const onSubmit = e => {
         e.preventDefault();
         if(!username && !password){
-            toast.error("Please enter you username and password", {hideProgressBar: true, autoClose: 2000});
+            toast.error("Please enter your username and password", {hideProgressBar: true, autoClose: 2000});
             return;
         }
         if(!username){
-            toast.error("Please enter you username", {hideProgressBar: true, autoClose: 1500});
+            toast.error("Please enter your username", {hideProgressBar: true, autoClose: 1500});
             return;
         }
         if(!password){
-            toast.error("Please enter you password", {hideProgressBar: true, autoClose: 1500});
+            toast.error("Please enter your password", {hideProgressBar: true, autoClose: 1500});
             return;
         }
-        toast.success("Signed in", {hideProgressBar: true, autoClose: 1000});
         const userData = {username, password};
         dispatch(login(userData));
     }

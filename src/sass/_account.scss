@@ -2,6 +2,8 @@ section.account{
     font-family: 'Fira Sans', sans-serif;
     .user-details{
         position: relative;
+        margin: auto;
+        max-width: 800px;
         div:not(:first-of-type){
             margin-top: 20px;
         }

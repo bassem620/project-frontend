@@ -3,6 +3,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const AdBox = props => {
     const navigate = useNavigate();
@@ -16,14 +17,14 @@ const AdBox = props => {
     }
     return (
         <>
-        <div className="box col-sm-6 col-md-4 col-xl-3">
+        <div className="box col-sm-6 col-md-4 col-xl-3 prevent-select">
             <div className="box-body">
                 <div className="box-image" onClick={adDetails}>
                     <img src={images[0]} alt={title + " image"} className="img-fluid"/>
                 </div>
                 <div className="box-text" onClick={adDetails}>
                     <span className="box-title">{title}</span>
-                    <span className="box-date">{date}</span>
+                    <span className="box-date">{formatDistanceToNow(new Date(date), {addSuffix: true})}</span>
                     <span className="box-price">EGP. {price}</span>
                 </div>
                 { user ?

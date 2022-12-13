@@ -1,42 +1,24 @@
-import { useEffect, useMemo } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Spinner from "../components/Spinner";
-import { getAds, reset } from "../features/ads/adSlice";
 import AdBox from "../components/AdBox";
 import Search from "../components/search";
 
 const Home = () => {
-    const dispatch = useDispatch();
-
     const {user} = useSelector( state => state.user);
-    const {ads, isError, isLoading, message} = useSelector( state => state.ad);
-
-    const allAds = useMemo( _ => ads , [ads]);
-
-    useEffect( _ => {
-        if(isError){
-            console.log(message);
-        }
-        dispatch(getAds());
-        return () => {
-            dispatch(reset());
-        }
-    }, [user, isError, message, dispatch]);
-
-    if(isLoading){
-        return <Spinner/>;
-    }
+    const {ads, isLoading} = useSelector( state => state.ad);
 
     return (
         <>
+        { isLoading ? <Spinner/> :
+        (
         <section className="home">
-        <Search />
+            <Search />
             <div className="container-lg">
                 <h2 className="title text-dark-1">Recently added</h2>
-                { allAds.length > 0 ?
+                { ads.length > 0 ?
                     (
                         <div className="row">
-                        {allAds.map( ad => (
+                        {ads.map( ad => (
                             <AdBox 
                             key={ad._id}
                             user={user}
@@ -55,6 +37,7 @@ const Home = () => {
                 }
             </div>
         </section>
+        )}
         </>
     );
 }

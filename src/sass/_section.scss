@@ -4,12 +4,13 @@ section {
     width: 100%;
     padding: 10px 0;
     .container-lg{
-        min-height: calc(100vh - $navHeight - $footerHeight) !important;
+        min-height: calc(100vh - $navHeight - $footerHeight - 20px) !important;
     }
     .title{
         margin: 0;
         margin-bottom: 10px;
         padding: 0;
+        padding-left: 5px;
         font-family: 'Fira Sans', sans-serif;
         font-weight: 500;
     }
@@ -18,9 +19,10 @@ section {
         padding: 0 9px;
         .box{
             padding: 6px;
-            height: 350px;
+            min-height: 350px;
             overflow: hidden;
             transition: 0.2s ease-in-out;
+            
             &:hover{
                 transform: scale(1.008);
             }
@@ -38,6 +40,11 @@ section {
                     background-color: $dark-1;
                     box-shadow: $boxImageShadow;
                     overflow: hidden;
+                    img{
+                        transform: translateY(-50%);
+                        top: 50%;
+                        position: relative;
+                    }
                 }
                 .box-text{
                     font-family: 'Fira Sans', sans-serif;

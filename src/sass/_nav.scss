@@ -1,21 +1,23 @@
-nav{
-    .name{
+nav {
+    .name {
         font-family: 'Fira Sans', sans-serif !important;
         font-weight: 500;
     }
 }
 
-.sell-btn{
+.sell-btn {
     padding: 7px 17px 7px 37px !important;
     position: relative;
     transition: 0.2s ease-in-out;
-    & span{
+
+    & span {
         font-size: 18px;
     }
-    .add-icon{
+
+    .add-icon {
         position: absolute;
         top: 50%;
-        left:0;
+        left: 0;
         transform: translate(-50%, -50%);
         height: 60px;
         width: 60px;
@@ -23,29 +25,36 @@ nav{
         color: $dark-1;
         border: 5px solid $green;
         border-radius: 50%;
-        svg{
+
+        svg {
             padding: 4px;
             width: 100%;
             height: 100%;
         }
+
         box-shadow: 2px 0px 6px rgb(0 0 0 / 55%) !important;
     }
-    &:hover{
+
+    &:hover {
         transform: scale(1.03);
     }
-    &.active{
+
+    &.active {
         background-color: $green !important;
         box-shadow: $activeShadow;
     }
 }
-@media(max-width: 1200px){
-    .sell-btn{
+
+@media(max-width: 1200px) {
+    .sell-btn {
         padding: 0 !important;
         width: 0;
-        span{
+
+        span {
             visibility: hidden;
         }
-        &.active .add-icon{
+
+        &.active .add-icon {
             background-color: $green !important;
             border-color: $dark-1;
             color: white !important;
@@ -53,30 +62,33 @@ nav{
     }
 }
 
-@media(max-width: 991px){
-    nav{
+@media(max-width: 991px) {
+    nav {
         padding: 0 !important;
         height: $navHeight !important;
         width: 100%;
         position: relative;
-        .menu.show .links-container{
+
+        .menu.show .links-container {
             animation-name: drop-down;
             animation-duration: 0.3s;
             animation-fill-mode: forwards;
             animation-timing-function: ease-out;
         }
-        .menu.hide .links-container{
+
+        .menu.hide .links-container {
             animation-name: menu-up;
             animation-duration: 0.3s;
             animation-fill-mode: forwards;
-            animation-timing-function: ease-out;
+            animation-timing-function: ease-in;
         }
-        .links-container{
+
+        .links-container {
             font-size: 17px;
             font-weight: 400;
             position: absolute;
             z-index: -1 !important;
-            top: -252px;
+            top: -290px;
             left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 15px);
@@ -85,24 +97,29 @@ nav{
             border-radius: 0 0 30px 30px;
             box-shadow: 0 0.5rem 1rem rgba(black, .15);
         }
-        .navbar-link{
+
+        .navbar-link {
             color: $green;
             border-radius: 50px;
             padding: 10px 15px;
             margin-top: 5px;
+
             .link-icon {
                 padding-left: 5px;
             }
-            .link-text{
+
+            .link-text {
                 vertical-align: middle;
                 padding: 3px 10px;
             }
-            &.active{
+
+            &.active {
                 background-color: $green;
                 color: white !important;
                 box-shadow: $activeShadow;
             }
-            &:hover:not(.active){
+
+            &:hover:not(.active) {
                 color: $green;
                 background-color: $light-green;
                 box-shadow: $mobileHoverShadow;
@@ -110,33 +127,38 @@ nav{
         }
     }
 }
+
 @keyframes drop-down {
-    0%   {
-        top: -252px;
+    0% {
+        top: -290px;
         opacity: 0;
     }
+
     100% {
         top: 60px;
         opacity: 1;
     }
 }
+
 @keyframes menu-up {
     0% {
         opacity: 1;
         top: 60px;
     }
+
     100% {
-        top: -252px;
+        top: -290px;
         opacity: 0;
     }
 }
 
-@media(min-width: 992px){
-    nav{
+@media(min-width: 992px) {
+    nav {
         height: $navHeight !important;
         width: 100%;
         margin-top: 0;
         overflow: hidden;
+
         .links-container {
             width: auto;
             color: white;
@@ -146,7 +168,8 @@ nav{
             position: relative;
             height: 61px !important;
             border-radius: $navRadius !important;
-            &::before{
+
+            &::before {
                 content: '';
                 height: 61px;
                 width: 300px;
@@ -157,32 +180,38 @@ nav{
                 transform: translateX(100%);
             }
         }
-        .navbar-link{
-            padding:8px 8px !important;
+
+        .navbar-link {
+            padding: 8px 8px !important;
             color: white !important;
             height: 47px !important;
             margin: 7px 0 7px 7px;
             border-radius: 22px;
             font-size: 18px;
-            .link-container{
+
+            .link-container {
                 height: 100%;
                 width: 100%;
                 display: flex;
                 align-items: center;
+
                 .link-icon {
                     margin: auto;
                     padding-left: 3px;
                 }
-                .link-text{
+
+                .link-text {
                     padding: 0 3px;
                     margin-top: auto;
                 }
             }
-            &.active{
+
+            &.active {
                 background-color: $green;
                 box-shadow: $activeShadow;
             }
-            &:hover:not(.active){
+
+            &:hover:not(.active) {
                 background-color: transparent;
                 box-shadow: $hoverShadow;
             }

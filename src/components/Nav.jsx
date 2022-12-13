@@ -29,9 +29,9 @@ const Nav = () => {
     }
     return (
         <>
-        <nav className="navbar navbar-expand-lg bg-white fixed-top">
+        <nav className="navbar navbar-expand-lg bg-white fixed-top prevent-select">
             <div className="container-lg my-lg-auto bg-white h-100">
-                <NavLink to="/home" className="name text-dark-1 fs-2 fw-bold">App Name</NavLink>
+                <NavLink to="/project-frontend/home" className="name text-dark-1 fs-2 fw-bold">App Name</NavLink>
                 <button className="toggler d-block ms-auto d-lg-none btn btn-outline-green" type="button" onClick={ _ => setMenuState(menuState === "hide" ? "show" : "hide")}>
                     <DehazeRoundedIcon />
                 </button>
