@@ -57,7 +57,7 @@ const ChangePassword = props => {
     return (
         <>
         <div className="modal d-block prevent-selection">
-            <div className="container-lg d-flex align-items-center justify-content-center">
+            <div className="container-lg d-flex align-items-center justify-content-center w-100 h-100">
                 <div className="modalForm bg-light-green rounded-5 p-4">
                     {isLoading ? <Spinner /> : <></>}
                     <form onSubmit={onSubmit}>

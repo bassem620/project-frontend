@@ -60,6 +60,7 @@ export const logout = createAsyncThunk(
 export const changePassword = createAsyncThunk(
     "user/changePassword",
     async (userData, thunkAPI) => {
+        thunkAPI.dispatch(reset());
         try{
             const token = thunkAPI.getState().user.user.token;
             return await userService.changePassword(token, userData);
@@ -80,7 +81,20 @@ export const changePassword = createAsyncThunk(
 export const editAccount = createAsyncThunk(
     "user/editAccount",
     async (user, thunkAPI)=> {
-        return await userService.editAccount(user);
+        thunkAPI.dispatch(reset());
+        try{
+            const token = thunkAPI.getState().user.user.token;
+            return await userService.editAccount(token,user);
+        } catch (error) {
+            const message = 
+            (
+                error.response &&
+                error.response.data &&
+                error.response.data.message
+            ) || error.message 
+            || error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
     }
 )
 

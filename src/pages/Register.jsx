@@ -96,7 +96,7 @@ const Register = () => {
                         Phone
                     </label>
                     <input 
-                        type="number" 
+                        type="phone" 
                         className="rounded-pill py-2 px-4 bg-light-white border-0"
                         name="phone"
                         id="phone"

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { logout, reset } from "../features/users/userSlice";
+import { logout } from "../features/users/userSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ChangePassword from "../components/ChangePassword";
@@ -17,7 +17,7 @@ const Account = () => {
     return (
         <>
         <section className="account">
-            <div className="container-lg">
+            <div className="container-lg d-flex justify-content-center align-items-center">
                 <div className="user-details bg-light-green rounded-5 px-3 py-5 px-sm-5 text-center text-sm-start">
                     <div className="icon"><AccountCircleOutlinedIcon /></div>
                     <div>
@@ -34,11 +34,11 @@ const Account = () => {
                     </div>
                     <div>
                         <label>Phone:</label>
-                        <span>0{user.phone}</span>
+                        <span>{user.phone}</span>
                     </div>
                     <div className="buttons mx-auto mx-sm-0 ms-sm-auto">
-                    <button type="button" className="btn btn-green me-2" onClick={ _ => {setEditModal(!editModal); dispatch(reset());}}>Edit your account</button>
-                    <button type="button" className="btn btn-green me-2" onClick={ _ => {setPassModal(!passModal); dispatch(reset());}}>Change password</button>
+                    <button type="button" className="btn btn-green me-2" onClick={ _ => setEditModal(!editModal)}>Edit your account</button>
+                    <button type="button" className="btn btn-green me-2" onClick={ _ => setPassModal(!passModal)}>Change password</button>
                     <button type="button" className="btn btn-danger" onClick={ _ => {navigate('/'); toast.info("Signed out", {hideProgressBar: true, autoClose: 1000}); dispatch(logout());}}>Logout</button>
                     </div>
                 </div>

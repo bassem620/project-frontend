@@ -1,17 +1,8 @@
 import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Link, useNavigate } from "react-router-dom";
-// import Spinner from "../components/Spinner"
-// import { register, reset } from "../features/users/userSlice";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { toast } from "react-toastify";
 
 const EditAccount = props => {
-        // const navigate = useNavigate();
-    // const dispatch = useDispatch();
-
-    // const {user, isLoading, isError, isSuccess, message } = useSelector( state => state.user);
-
     const {editModal, setEditModal} = props;
 
     const [formData, setFormData] = useState({
@@ -36,31 +27,12 @@ const EditAccount = props => {
             toast.error("Please enter all fields", {hideProgressBar: true, autoClose: 1500});
             return;
         }
-        // const userData = {firstName, lastName, username, phone, password};
-        // dispatch(register(userData));
     }
 
-    // useEffect( _ => {
-    //     if(isError){
-    //         toast.error(message, {hideProgressBar: true, autoClose: 3000});
-    //     }
-    //     if(isSuccess){
-    //         navigate('/');
-    //         toast.success("You are signed up successfully", {hideProgressBar: true, autoClose: 1500});
-    //     }
-    //     if(user){
-    //         navigate('/');
-    //     }
-    //     dispatch(reset());
-    // }, [user, isError, isSuccess, message, navigate, dispatch]);
-
-    // if(isLoading){
-    //     return <Spinner />
-    // }
     return (
         <>
         <div className="modal d-block prevent-selection">
-            <div className="container-lg d-flex align-items-center justify-content-center">
+            <div className="container-lg d-flex align-items-center justify-content-center w-100 h-100">
                 <div className="modalForm bg-light-green rounded-5 p-4">
                     <form submit={onSubmit}>
                         <h3 className="text-dark-1 text-center p-2">Edit Account</h3>
