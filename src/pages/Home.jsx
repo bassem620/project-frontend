@@ -18,14 +18,14 @@ const Home = () => {
                 { ads.length > 0 ?
                     (
                         <div className="row">
-                        {ads.map( ad => (
+                        {ads.map( (ad, index) => (
                             <AdBox 
-                            key={ad._id}
+                            key={index}
                             user={user}
                             title={ad.title}
                             date={ad.createdAt}
                             price={ad.price}
-                            liked={ (user.fav).includes(ad._id)}
+                            liked={ user ? (user.fav).includes(ad._id) : null}
                             images={ad.imgs}
                             id={ad._id}
                         />

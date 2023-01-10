@@ -75,12 +75,17 @@ section {
                     }
                 }
                 .favorite{
+                    height: 35px;
+                    width: 35px;
                     padding: 5px;
                     border-radius: 50%;
                     background-color: $white;
                     position: absolute;
                     bottom: 20px;
                     right: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     &:hover{
                             background-color: rgba(1,1,1,0.1);
                     }

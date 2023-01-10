@@ -29,3 +29,11 @@
         transform: rotate(360deg);
     }
 }
+
+.loadingLike{
+    width: 25px !important;
+    height: 25px !important;
+    & svg{
+        color: $grey !important;
+    }
+}

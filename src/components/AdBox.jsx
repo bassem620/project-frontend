@@ -1,5 +1,7 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import CircularProgress from '@mui/material/CircularProgress';
+import Stack from '@mui/material/Stack';
 
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
@@ -7,7 +9,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const AdBox = props => {
     const navigate = useNavigate();
-    const {id, images, title, date, price, liked, user} = props;
+    const { user, id, images, title, date, price, liked} = props;
     const [like, setLike] = useState(liked);
 
     // Like Btn
@@ -32,9 +34,14 @@ const AdBox = props => {
                     <span className="box-date">{formatDistanceToNow(new Date(date), {addSuffix: true})}</span>
                     <span className="box-price">EGP. {price}</span>
                 </div>
+                {/* Like Btn */}
                 { user ?
                 (
                     <div className="favorite" onClick={toggleLike}>
+                        
+                        {/* <Stack >
+                            <CircularProgress className='loadingLike' />
+                        </Stack> */}
                         { like ? <FavoriteIcon  className='text-danger'/> : <FavoriteBorderIcon/>}
                     </div>
                 ) : null}
