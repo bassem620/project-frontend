@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { changePassword, logout } from "../features/users/userSlice";
+import { changePassword, logout, reset } from "../features/users/userSlice";
 
 const ChangePassword = props => {
     const navigate = useNavigate();
@@ -25,6 +25,7 @@ const ChangePassword = props => {
     useEffect( _ => {
         if(isError){
             toast.error(message, {hideProgressBar: true, autoClose: 2000});
+            dispatch(reset());
         }
         if(isSuccess){
             navigate("../project-frontend/home");

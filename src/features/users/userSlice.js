@@ -60,7 +60,6 @@ export const logout = createAsyncThunk(
 export const changePassword = createAsyncThunk(
     "user/changePassword",
     async (userData, thunkAPI) => {
-        thunkAPI.dispatch(reset());
         try{
             const token = thunkAPI.getState().user.user.token;
             return await userService.changePassword(token, userData);
@@ -80,11 +79,10 @@ export const changePassword = createAsyncThunk(
 // Edit Account
 export const editAccount = createAsyncThunk(
     "user/editAccount",
-    async (user, thunkAPI)=> {
-        thunkAPI.dispatch(reset());
+    async (userData, thunkAPI)=> {
         try{
             const token = thunkAPI.getState().user.user.token;
-            return await userService.editAccount(token,user);
+            return await userService.editAccount(token,userData);
         } catch (error) {
             const message = 
             (
@@ -186,7 +184,9 @@ export const userSlice = createSlice({
             })
             .addCase(editAccount.fulfilled, (state, action) => {
                 state.isLoading = false;
+                state.isSuccess = true;
                 state.user = action.payload;
+                state.message = "Account is updated successfully";
             })
             .addCase(editAccount.rejected, (state, action) => {
                 state.isLoading = false;

@@ -9,12 +9,17 @@ const AdBox = props => {
     const navigate = useNavigate();
     const {id, images, title, date, price, liked, user} = props;
     const [like, setLike] = useState(liked);
+
+    // Like Btn
     const toggleLike = _ => {
         setLike(!like);
     }
+
+    // Ad details Fn
     const adDetails = _ => {
         navigate("/project-frontend/ads/" + id);
     }
+
     return (
         <>
         <div className="box col-sm-6 col-md-4 col-xl-3 prevent-select">

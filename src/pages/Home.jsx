@@ -9,7 +9,7 @@ const Home = () => {
 
     return (
         <>
-        { isLoading ? <Spinner/> :
+        { isLoading ? <Spinner/> : null }{
         (
         <section className="home">
             <Search />
@@ -25,7 +25,7 @@ const Home = () => {
                             title={ad.title}
                             date={ad.createdAt}
                             price={ad.price}
-                            liked={ user ? (user.id === ad.ownerID ? true : false) : null}
+                            liked={ (user.fav).includes(ad._id)}
                             images={ad.imgs}
                             id={ad._id}
                         />
